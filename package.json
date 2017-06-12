@@ -1,0 +1,38 @@
+{
+  "name": "masq",
+  "version": "0.0.1",
+  "description": "A simple dnsmasq like service written in Node.js",
+  "main": "index.js",
+  "bin": {
+    "masq": "./bin/masq"
+  },
+  "scripts": {
+    "build": "cake build",
+    "docs": "cake docs",
+    "test": "mocha"
+  },
+  "keywords": [
+    "masq",
+    "dnsmasq"
+  ],
+  "author": "Tan Shuai",
+  "license": "MIT",
+  "devDependencies": {
+    "coffeescript": "^2.0.0-beta2",
+    "docco": "^0.7.0",
+    "eco": "^1.1.0-rc-3"
+  },
+  "dependencies": {
+    "async": "^2.4.1",
+    "dnsserver": "https://github.com/sstephenson/dnsserver.js/tarball/4f2c713b2e",
+    "log": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7anshuai/masq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/7anshuai/masq/issues"
+  },
+  "homepage": "https://github.com/7anshuai/masq#readme"
+}
