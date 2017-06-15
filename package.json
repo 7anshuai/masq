@@ -9,7 +9,8 @@
   "scripts": {
     "build": "cake build",
     "docs": "cake docs",
-    "test": "mocha"
+    "watch": "cake watch",
+    "test": "cake test"
   },
   "keywords": [
     "masq",
@@ -20,7 +21,8 @@
   "devDependencies": {
     "coffeescript": "^2.0.0-beta2",
     "docco": "^0.7.0",
-    "eco": "^1.1.0-rc-3"
+    "eco": "^1.1.0-rc-3",
+    "nodeunit": "^0.11.1"
   },
   "dependencies": {
     "async": "^2.4.1",

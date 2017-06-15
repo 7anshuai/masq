@@ -44,7 +44,7 @@ module.exports = class Daemon extends EventEmitter
             try @dnsServer.close()
             @emit "error", err
 
-        startServer @dnsServer, @configuration.dnsPort, (err) =>
+        startServer @dnsServer, @configuration.dnsPort, (err) ->
             if err then flunk err
             else pass()
 

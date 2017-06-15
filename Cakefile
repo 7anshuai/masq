@@ -3,7 +3,7 @@ fs            = require 'fs'
 async = require('async')
 
 build = (watch, callback) ->
-    if typeof wathc is 'function'
+    if typeof watch is 'function'
         callback = watch
         watch = false
     options = ['-c', '-o', 'lib', 'src']
@@ -42,3 +42,11 @@ task 'build', 'Compile CoffeeScript source files', ->
 
 task 'watch', 'Recompile CoffeeScript source files when modified', ->
     build true
+
+task 'test', 'Run the Masq test suite', ->
+    build ->
+        process.env["NODE_ENV"] = "test"
+
+        {reporters} = require 'nodeunit'
+        process.chdir __dirname
+        reporters.default.run ['test']
