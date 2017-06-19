@@ -1,7 +1,7 @@
 {
   "name": "masq",
-  "version": "0.0.1",
-  "description": "A simple dnsmasq like service written in Node.js",
+  "version": "0.1.0",
+  "description": "A simple dnsmasq like service extracted from Pow",
   "main": "index.js",
   "bin": {
     "masq": "./bin/masq"
@@ -13,8 +13,10 @@
     "test": "cake test"
   },
   "keywords": [
+    "dns",
     "masq",
-    "dnsmasq"
+    "dnsmasq",
+    "pow"
   ],
   "author": "Tan Shuai",
   "license": "MIT",

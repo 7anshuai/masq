@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
         <key>Label</key>
-        <string>cx.pow.powd</string>
+        <string>cx.masq.masqd</string>
         <key>ProgramArguments</key>
         <array>
                 <string><%= process.execPath %></string>

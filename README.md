@@ -1,1 +1,76 @@
 # masq
+
+Masq is a simple [DNSMasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) like service written in CoffeeScript. The first version was extracted from [Pow](https://github.com/basecamp/pow).
+
+## Local DNS
+As it is not possible to use wildcards in the /etc/hosts file, we cannot specify something like:
+```
+127.0.0.1 *.dev.
+```
+
+To get around this problem, we will install a DNS proxy, like DNSMasq. If you are a JavaScript Developer, you can give a try with masq.
+
+## Getting Started
+
+Masq/Pow's `DnsServer` is designed to respond to DNS `A` queries with `127.0.0.1` for all subdomains of the specified top-level domain.
+When used in conjunction with Mac OS X's [/etc/resolver system](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man5/resolver.5.html), there's no configuration needed to add and remove host names for local web development.
+
+## Installtion
+```bash
+$ npm install -g masq
+```
+
+## Usage
+
+The user configuration file, `~/.masqconfig`, is evaluated on boot. You can configure options such as the top-level domain, listening ports.
+
+```bash
+export MASQ_DOMAINS=dev,test
+```
+
+Then you can run `masq --print-config`, it will output like this:
+
+```bash
+$ masq --print-config
+MASQ_BIN='/path/to/masq/bin/masq'
+MASQ_DNS_PORT='20560'
+MASQ_DOMAINS='dev,test'
+MASQ_EXT_DOMAINS=''
+MASQ_LOG_ROOT='/path/to/Library/Logs/Masq'
+```
+
+If all is ok, run `masq --install-system` to install DNS configuration files (need `sudo`).
+```bash
+$ sudo masq --install-system
+```
+
+Then simply start it:
+```bash
+masq
+```
+
+Now, if we try to ping some any address ending in `.dev`, it should return `127.0.0.1`.
+```bash
+$ ping example.dev
+PING example.dev (127.0.0.1): 56 data bytes
+```
+
+## Run as daemon
+
+Generate daemon configuration file:
+```
+$ masq --install-local
+```
+
+Then:
+```
+launchctl load ~/Library/LaunchAgents/cx.masq.masqd.plist
+```
+
+## Inspiration
+- [Serving Apps Locally with Nginx and Pretty Domains
+](https://zaiste.net/posts/serving_apps_locally_with_nginx_and_pretty_domains/)
+- [Pow](https://github.com/basecamp/pow)
+
+## License
+[MIT](/LICENSE)

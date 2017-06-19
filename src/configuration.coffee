@@ -39,7 +39,7 @@ module.exports = class Configuration
                         callback null, env
 
     # Creates a Configuration object after evaluating the user
-    # configuration file. Any environment variables in `~/.msaqrc`
+    # configuration file. Any environment variables in `~/.masqconfig`
     # affect the process environment and will be copied to spawned
     # subprocesses.
     @getUserConfiguration: (callback) ->
@@ -75,7 +75,7 @@ module.exports = class Configuration
         # configure this in your `~/.masqconfig` you will need to re-run
         # `sudo masq --install-system` to make `/etc/resolver` aware of
         # the new TLDs.
-        @domains    = env.MASQ_DOMAINS     ? env.MASQ_DOMAIN ? "dev"
+        @domains    = env.MASQ_DOMAINS     ? env.MASQ_DOMAINS ? "dev"
 
         # `MASQ_EXT_DOMAINS`: additional top-level domains for which Masq
         # will serve HTTP requests (but not DNS requests -- hence the

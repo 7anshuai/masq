@@ -3,17 +3,17 @@
 # configuration files if they're missing or out of date. It's used by
 # the Pow install script to set up the system for local development.
 
-async        = require "async"
-fs           = require "fs"
-path         = require "path"
+async    = require "async"
+fs       = require "fs"
+path     = require "path"
 {mkdirp} = require "./utils"
 {chown}  = require "./utils"
-util         = require "util"
+util     = require "util"
 
 # Import the Eco templates for the `/etc/resolver` and `launchd`
 # configuration files.
 resolverSource = require "./templates/resolver"
-firewallSource = require "./templates/cx.masq.firewall.plist"
+# firewallSource = require "./templates/cx.masq.firewall.plist"
 daemonSource     = require "./templates/cx.masq.masqd.plist"
 
 # `InstallerFile` represents a single file candidate for installation:
@@ -80,9 +80,9 @@ module.exports = class Installer
     # an `Installer` for system firewall and DNS configuration files.
     @getSystemInstaller: (configuration) ->
         files = [
-            new InstallerFile "/Library/LaunchDaemons/cx.masq.firewall.plist",
-                firewallSource(configuration),
-                true
+            # new InstallerFile "/Library/LaunchDaemons/cx.masq.firewall.plist",
+            #     firewallSource(configuration),
+            #     true
         ]
 
         for domain in configuration.domains
