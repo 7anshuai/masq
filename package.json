@@ -1,7 +1,7 @@
 {
   "name": "masq",
-  "version": "0.1.0",
-  "description": "A simple dnsmasq like service extracted from Pow",
+  "version": "0.1.1",
+  "description": "A simple local dns server extracted from Pow",
   "main": "index.js",
   "bin": {
     "masq": "./bin/masq"

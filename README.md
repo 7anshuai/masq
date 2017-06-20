@@ -1,9 +1,9 @@
 # masq
 
-Masq is a simple [DNSMasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) like service written in CoffeeScript. The first version was extracted from [Pow](https://github.com/basecamp/pow).
+Masq is a simple local dns server like [DNSMasq](http://www.thekelleys.org.uk/dnsmasq/doc.html). The first version was extracted from [Pow](https://github.com/basecamp/pow).
 
 ## Local DNS
-As it is not possible to use wildcards in the /etc/hosts file, we cannot specify something like:
+As it is not possible to use wildcards in the `/etc/hosts` file, we cannot specify something like:
 ```
 127.0.0.1 *.dev.
 ```
@@ -15,7 +15,7 @@ To get around this problem, we will install a DNS proxy, like DNSMasq. If you ar
 Masq/Pow's `DnsServer` is designed to respond to DNS `A` queries with `127.0.0.1` for all subdomains of the specified top-level domain.
 When used in conjunction with Mac OS X's [/etc/resolver system](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man5/resolver.5.html), there's no configuration needed to add and remove host names for local web development.
 
-## Installtion
+## Installation
 ```bash
 $ npm install -g masq
 ```
@@ -68,9 +68,10 @@ launchctl load ~/Library/LaunchAgents/cx.masq.masqd.plist
 ```
 
 ## Inspiration
+- [Pow](https://github.com/basecamp/pow) - Zero-configuration Rack server for Mac OS X
 - [Serving Apps Locally with Nginx and Pretty Domains
 ](https://zaiste.net/posts/serving_apps_locally_with_nginx_and_pretty_domains/)
-- [Pow](https://github.com/basecamp/pow)
+- [Using Dnsmasq for local development on OS X](https://passingcuriosity.com/2013/dnsmasq-dev-osx/)
 
 ## License
 [MIT](/LICENSE)
