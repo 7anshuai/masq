@@ -6,7 +6,7 @@
 async    = require "async"
 fs       = require "fs"
 path     = require "path"
-{mkdirp} = require "./utils"
+mkdirp   = require "mkdirp"
 {chown}  = require "./utils"
 util     = require "util"
 
@@ -42,7 +42,7 @@ class InstallerFile
     # Create all the parent directories of the file's path, if
     # necessary, and then invoke `callback`.
     vivifyPath: (callback) ->
-        mkdirp path.dirname(@path), callback
+        mkdirp path.dirname(@path), 0o755, callback
 
     # Write the file's source to disk and invoke `callback`.
     writeFile: (callback) ->
@@ -125,6 +125,6 @@ module.exports = class Installer
         @getStaleFiles (files) ->
             async.forEach files, (file, proceed) ->
                 file.install (err) ->
-                    util.puts file.path unless err
+                    console.log file.path unless err
                     proceed err
             , callback

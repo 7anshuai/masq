@@ -7,7 +7,6 @@ fs                = require "fs"
 path              = require "path"
 async             = require "async"
 Logger            = require "./logger"
-{mkdirp}          = require "./utils"
 {sourceScriptEnv} = require "./utils"
 {getUserEnv}      = require "./utils"
 
@@ -17,7 +16,7 @@ module.exports = class Configuration
     # number of workers, the worker idle timeout, and listening ports.
     #
     #           export MASQ_DOMAINS=dev,test
-    #           export MASQ_WORKERS=3
+    #           export MASQ_DNS_PORT=20561
     #
     # See the `Configuration` constructor for a complete list of
     # environment options.
