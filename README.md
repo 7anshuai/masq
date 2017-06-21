@@ -1,6 +1,10 @@
-# masq
+# Masq
 
 Masq is a simple local dns server like [DNSMasq](http://www.thekelleys.org.uk/dnsmasq/doc.html). The first version was extracted from [Pow](https://github.com/basecamp/pow).
+
+Please note: Masq is only worked on macOS right now.
+
+[中文说明](/README_CN.md)
 
 ## Local DNS
 As it is not possible to use wildcards in the `/etc/hosts` file, we cannot specify something like:
@@ -8,7 +12,7 @@ As it is not possible to use wildcards in the `/etc/hosts` file, we cannot speci
 127.0.0.1 *.dev.
 ```
 
-To get around this problem, we will install a DNS proxy, like DNSMasq. If you are a JavaScript Developer, you can give a try with masq.
+To get around this problem, we will install a DNS proxy, like DNSMasq. If you are a JavaScript Developer, you can give a try with Masq.
 
 ## Getting Started
 
@@ -39,7 +43,7 @@ MASQ_EXT_DOMAINS=''
 MASQ_LOG_ROOT='/path/to/Library/Logs/Masq'
 ```
 
-If all is ok, run `masq --install-system` to install DNS configuration files (need `sudo`).
+If all is ok, run `masq --install-system` to install DNS configuration files (need `sudo`):
 ```bash
 $ sudo masq --install-system
 ```
@@ -49,7 +53,7 @@ Then simply start it:
 masq
 ```
 
-Now, if we try to ping some any address ending in `.dev`, it should return `127.0.0.1`.
+Now, if we try to ping some any address ending in `.dev`, it should return `127.0.0.1`:
 ```bash
 $ ping example.dev
 PING example.dev (127.0.0.1): 56 data bytes
