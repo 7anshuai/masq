@@ -1,5 +1,5 @@
 # A `Daemon` is the root object in a Masq process. It's responsible for
-# starting and stopping a `DnsServer` in tandem.
+# starting and stopping a `DnsServer`.
 
 {EventEmitter} = require "events"
 DnsServer      = require "./dns_server"

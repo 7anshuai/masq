@@ -29,7 +29,6 @@
   "dependencies": {
     "async": "^2.4.1",
     "dnsserver": "https://github.com/sstephenson/dnsserver.js/tarball/4f2c713b2e",
-    "log": "^1.4.0",
     "mkdirp": "^0.5.1"
   },
   "repository": {

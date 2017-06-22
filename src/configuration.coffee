@@ -1,12 +1,9 @@
 # The `Configuration` class encapsulates various options for a Masq
-# daemon (port numbers, directories, etc.). It's also responsible for
-# creating `Logger` instances and mapping hostnames to application
-# root paths.
+# daemon (port numbers, directories, etc.).
 
 fs                = require "fs"
 path              = require "path"
 async             = require "async"
-Logger            = require "./logger"
 {sourceScriptEnv} = require "./utils"
 {getUserEnv}      = require "./utils"
 
@@ -50,13 +47,12 @@ module.exports = class Configuration
 
     # A list of option names accessible on `Configuration` instances.
     @optionNames: [
-        "bin", "dnsPort", "domains", "extDomains", "logRoot"
+        "bin", "dnsPort", "domains"
     ]
 
     # Pass in any environment variables you'd like to override when
     # creating a `Configuration` instance.
     constructor: (env = process.env) ->
-        @logger = {}
         @initialize env
 
     # Valid environment variables and their defaults:
@@ -76,25 +72,11 @@ module.exports = class Configuration
         # the new TLDs.
         @domains    = env.MASQ_DOMAINS     ? env.MASQ_DOMAINS ? "dev"
 
-        # `MASQ_EXT_DOMAINS`: additional top-level domains for which Masq
-        # will serve HTTP requests (but not DNS requests -- hence the
-        # "ext").
-        @extDomains = env.MASQ_EXT_DOMAINS ? []
-
         # Allow for comma-separated domain lists, e.g. `MASQ_DOMAINS=dev,test`
         @domains    = @domains.split?(",")    ? @domains
-        @extDomains = @extDomains.split?(",") ? @extDomains
-        @allDomains = @domains.concat @extDomains
 
         # Support *.xip.io top-level domains.
-        @allDomains.push /\d+\.\d+\.\d+\.\d+\.xip\.io$/, /[0-9a-z]{1,7}\.xip\.io$/
-
-        # Runtime support files live in `~/Library/Application Support/Masq`.
-        @supportRoot = libraryPath "Application Support", "Masq"
-
-        # `MASQ_LOG_ROOT`: path to the directory that Masq will use to store
-        # its log files. Defaults to `~/Library/Logs/Masq`.
-        @logRoot    = env.MASQ_LOG_ROOT    ? libraryPath "Logs", "Masq"
+        @allDomains = @domains.concat /\d+\.\d+\.\d+\.\d+\.xip\.io$/, /[0-9a-z]{1,7}\.xip\.io$/
 
         # Precompile regular expressions for matching domain names to be
         # served by the DNS server.
@@ -106,15 +88,6 @@ module.exports = class Configuration
       result = {}
       result[key] = @[key] for key in @constructor.optionNames
       result
-
-    # Retrieve a `Logger` instance with the given `name`.
-    getLogger: (name) ->
-      @loggers[name] ||= new Logger path.join @logRoot, name + ".log"
-
-# Convenience wrapper for constructing paths to subdirectories of
-# `~/Library`.
-libraryPath = (args...) ->
-  path.join process.env.HOME, "Library", args...
 
 # Helper function for compiling a list of top-level domains into a
 # regular expression for matching purposes.
