@@ -60,17 +60,16 @@ Configuration.getUserConfiguration (err, configuration) ->
 
     # Create the installer, passing in our loaded configuration.
     else if createInstaller
-        debugger
         installer = createInstaller configuration
         # If a dry run was requested, check to see whether any files need
         # to be installed with root privileges. If yes, exit with a status
         # of 1. If no, exit with a status of 0.
         if dryRun
             installer.needsRootPrivileges (needsRoot) ->
-            exitCode = if needsRoot then 1 else 0
-            installer.getStaleFiles (files) ->
-                util.puts file.path for file in files
-                process.exit exitCode
+                exitCode = if needsRoot then 1 else 0
+                installer.getStaleFiles (files) ->
+                    console.log file.path for file in files
+                    process.exit exitCode
         # Otherwise, install all the requested files, printing the full
         # path of each installed file to stdout.
         else
