@@ -39,8 +39,6 @@ $ masq --print-config
 MASQ_BIN='/path/to/masq/bin/masq'
 MASQ_DNS_PORT='20560'
 MASQ_DOMAINS='dev,test'
-MASQ_EXT_DOMAINS=''
-MASQ_LOG_ROOT='/path/to/Library/Logs/Masq'
 ```
 
 If all is ok, run `masq --install-system` to install DNS configuration files (need `sudo`):

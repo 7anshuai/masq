@@ -1,6 +1,6 @@
 {
   "name": "masq",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A simple local dns server extracted from Pow",
   "main": "index.js",
   "bin": {

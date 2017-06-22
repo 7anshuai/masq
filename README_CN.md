@@ -38,8 +38,6 @@ $ masq --print-config
 MASQ_BIN='/path/to/masq/bin/masq'
 MASQ_DNS_PORT='20560'
 MASQ_DOMAINS='dev,test'
-MASQ_EXT_DOMAINS=''
-MASQ_LOG_ROOT='/path/to/Library/Logs/Masq'
 ```
 
 如果一切正常，运行 `masq --install-system` 来安装系统 DNS 配置文件（需要 root 权限）：
