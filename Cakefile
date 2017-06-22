@@ -25,7 +25,6 @@ buildTemplates = (callback) ->
     async.parallel [
         compile('resolver')
         compile('cx.masq.masqd.plist')
-        compile('cx.masq.firewall.plist')
     ], callback
 
 task 'docs', 'Generate annotated source code with Docco', ->

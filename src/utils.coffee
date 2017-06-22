@@ -95,7 +95,7 @@ makeTemporaryFilename = ->
   tmpdir    = process.env.TMPDIR ? "/tmp"
   timestamp = new Date().getTime()
   random    = parseInt Math.random() * Math.pow(2, 16)
-  filename  = "pow.#{process.pid}.#{timestamp}.#{random}"
+  filename  = "masq.#{process.pid}.#{timestamp}.#{random}"
   path.join tmpdir, filename
 
 # Read the contents of a file, unlink the file, then invoke the
