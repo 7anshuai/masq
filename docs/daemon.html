@@ -50,11 +50,6 @@
                 </a>
               
                 
-                <a class="source" href="logger.html">
-                  logger.coffee
-                </a>
-              
-                
                 <a class="source" href="utils.html">
                   utils.coffee
                 </a>
@@ -81,7 +76,7 @@
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <p>A <code>Daemon</code> is the root object in a Masq process. It’s responsible for
-starting and stopping a <code>DnsServer</code> in tandem.</p>
+starting and stopping a <code>DnsServer</code>.</p>
 
             </div>
             
@@ -155,7 +150,7 @@ path           = <span class="hljs-built_in">require</span> <span class="hljs-st
             <span class="hljs-keyword">try</span> @dnsServer.close()
             @emit <span class="hljs-string">"error"</span>, err
 
-        startServer @dnsServer, @configuration.dnsPort, <span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span>
+        startServer @dnsServer, @configuration.dnsPort, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
             <span class="hljs-keyword">if</span> err <span class="hljs-keyword">then</span> flunk err
             <span class="hljs-keyword">else</span> pass()</pre></div></div>
             

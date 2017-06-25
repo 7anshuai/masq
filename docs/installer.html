@@ -50,11 +50,6 @@
                 </a>
               
                 
-                <a class="source" href="logger.html">
-                  logger.coffee
-                </a>
-              
-                
                 <a class="source" href="utils.html">
                   utils.coffee
                 </a>
@@ -88,12 +83,12 @@ the Pow install script to set up the system for local development.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-async        = <span class="hljs-built_in">require</span> <span class="hljs-string">"async"</span>
-fs           = <span class="hljs-built_in">require</span> <span class="hljs-string">"fs"</span>
-path         = <span class="hljs-built_in">require</span> <span class="hljs-string">"path"</span>
-{mkdirp} = <span class="hljs-built_in">require</span> <span class="hljs-string">"./utils"</span>
+async    = <span class="hljs-built_in">require</span> <span class="hljs-string">"async"</span>
+fs       = <span class="hljs-built_in">require</span> <span class="hljs-string">"fs"</span>
+path     = <span class="hljs-built_in">require</span> <span class="hljs-string">"path"</span>
+mkdirp   = <span class="hljs-built_in">require</span> <span class="hljs-string">"mkdirp"</span>
 {chown}  = <span class="hljs-built_in">require</span> <span class="hljs-string">"./utils"</span>
-util         = <span class="hljs-built_in">require</span> <span class="hljs-string">"util"</span></pre></div></div>
+util     = <span class="hljs-built_in">require</span> <span class="hljs-string">"util"</span></pre></div></div>
             
         </li>
         
@@ -110,7 +105,6 @@ configuration files.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>resolverSource = <span class="hljs-built_in">require</span> <span class="hljs-string">"./templates/resolver"</span>
-firewallSource = <span class="hljs-built_in">require</span> <span class="hljs-string">"./templates/cx.masq.firewall.plist"</span>
 daemonSource     = <span class="hljs-built_in">require</span> <span class="hljs-string">"./templates/cx.masq.masqd.plist"</span></pre></div></div>
             
         </li>
@@ -175,7 +169,7 @@ necessary, and then invoke <code>callback</code>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    vivifyPath: <span class="hljs-function"><span class="hljs-params">(callback)</span> -&gt;</span>
-        mkdirp path.dirname(@path), callback</pre></div></div>
+        mkdirp path.dirname(@path), <span class="hljs-number">0</span>o755, callback</pre></div></div>
             
         </li>
         
@@ -280,16 +274,12 @@ files asynchronously.</p>
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Factory method that takes a <code>Configuration</code> instance and returns
-an <code>Installer</code> for system firewall and DNS configuration files.</p>
+an <code>Installer</code> for DNS configuration files.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    @getSystemInstaller: <span class="hljs-function"><span class="hljs-params">(configuration)</span> -&gt;</span>
-        files = [
-            <span class="hljs-keyword">new</span> InstallerFile <span class="hljs-string">"/Library/LaunchDaemons/cx.masq.firewall.plist"</span>,
-                firewallSource(configuration),
-                <span class="hljs-literal">true</span>
-        ]
+        files = []
 
         <span class="hljs-keyword">for</span> domain <span class="hljs-keyword">in</span> configuration.domains
             files.push <span class="hljs-keyword">new</span> InstallerFile <span class="hljs-string">"/etc/resolver/<span class="hljs-subst">#{domain}</span>"</span>,
@@ -391,7 +381,7 @@ not any files need to be installed as root.</p>
         @getStaleFiles (files) -&gt;
             async.forEach files, <span class="hljs-function"><span class="hljs-params">(file, proceed)</span> -&gt;</span>
                 file.install (err) -&gt;
-                    util.puts file.path <span class="hljs-keyword">unless</span> err
+                    <span class="hljs-built_in">console</span>.log file.path <span class="hljs-keyword">unless</span> err
                     proceed err
             , callback</pre></div></div>
             
