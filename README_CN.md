@@ -58,7 +58,7 @@ PING example.dev (127.0.0.1): 56 data bytes
 
 ## 运行守护进程
 
-生产守护进程配置文件：
+生成守护进程配置文件：
 ```
 $ masq --install-local
 ```
