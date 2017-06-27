@@ -1,13 +1,12 @@
-net = require "net"
+dgram = require "dgram"
 fs = require "fs"
 path = require "path"
 {testCase} = require "nodeunit"
 {Configuration, Daemon} = require ".."
-{prepareFixtures, fixturePath} = require "./lib/test_helper"
 
 module.exports = testCase
     setUp: (proceed) ->
-        prepareFixtures proceed
+        proceed()
 
     "start and stop": (test) ->
         test.expect 2
@@ -23,19 +22,18 @@ module.exports = testCase
                 test.ok !daemon.started
                 test.done()
 
-    # "start rolls back when it can't boot a server": (test) ->
-    #     test.expect 2
+    "start rolls back when it can't boot a server": (test) ->
+        test.expect 2
 
-    #     server = net.createServer()
-    #     server.listen 0, ->
-    #         port = server.address().port
-    #         console.log port
-    #         configuration = new Configuration MASQ_DNS_PORT: port
-    #         daemon = new Daemon configuration
+        server = dgram.createSocket('udp4')
+        server.bind 0, ->
+            port = server.address().port
+            configuration = new Configuration MASQ_DNS_PORT: port
+            daemon = new Daemon configuration
 
-    #         daemon.start()
-    #         daemon.on "error", (err) ->
-    #             test.ok err
-    #             test.ok !daemon.started
-    #             server.close()
-    #             test.done()
+            daemon.start()
+            daemon.on "error", (err) ->
+                test.ok err
+                test.ok !daemon.started
+                server.close()
+                test.done()

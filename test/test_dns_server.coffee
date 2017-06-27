@@ -3,11 +3,11 @@ async       = require "async"
 {exec}      = require "child_process"
 {testCase}  = require "nodeunit"
 
-{prepareFixtures, createConfiguration} = require "./lib/test_helper"
+{createConfiguration} = require "./lib/test_helper"
 
 module.exports = testCase
     setUp: (proceed) ->
-        prepareFixtures proceed
+        proceed()
 
     "responds to all A queries for the configured domain": (test) ->
         test.expect 12

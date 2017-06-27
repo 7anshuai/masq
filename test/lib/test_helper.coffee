@@ -12,20 +12,8 @@ exports.merge = merge = (objects...) ->
       result[key] = value
   result
 
-exports.fixturePath = fixturePath = (path) ->
-  join fs.realpathSync(join __dirname, ".."), "fixtures", path
-
-defaultEnvironment =
-  POW_HOST_ROOT: fixturePath "tmp"
-  POW_LOG_ROOT:  fixturePath "tmp/logs"
-
 exports.createConfiguration = (env = {}) ->
-  new Configuration merge defaultEnvironment, env
-
-exports.prepareFixtures = (callback) ->
-  rm_rf fixturePath("tmp"), ->
-    mkdirp fixturePath("tmp"), ->
-      callback()
+  new Configuration merge {}, env
 
 exports.rm_rf = rm_rf = (path, callback) ->
   exec "rm -rf #{path}", callback
