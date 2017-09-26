@@ -21,7 +21,7 @@
   "author": "Tan Shuai",
   "license": "MIT",
   "devDependencies": {
-    "coffeescript": "^2.0.0-beta2",
+    "coffeescript": "^2.0.0",
     "docco": "^0.7.0",
     "eco": "^1.1.0-rc-3",
     "nodeunit": "^0.11.1"
