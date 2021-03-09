@@ -16,7 +16,7 @@ Masq 是一个简单的本地 DNS 服务器，类似于 [DNSMasq](http://www.the
 ## 开始
 
 Masq（或者 Pow）的 `DnsServer` 被设计为对指定的顶级域名（及其子域名）的 DNS `A` 查询响应 IP 地址 `127.0.0.1`。
-当与 Mac OS X的 [/etc/resolver system](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man5/resolver.5.html) 结合使用时，不需要添加和删除本地Web开发的主机名等类似配置。
+当与 Mac OS X的 [/etc/resolver system](https://www.manpagez.com/man/5/resolver/) 结合使用时，不需要添加和删除本地Web开发的主机名等类似配置。
 
 ## 安装
 ```bash

@@ -17,7 +17,7 @@ To get around this problem, we will install a DNS proxy, like DNSMasq. If you ar
 ## Getting Started
 
 Masq/Pow's `DnsServer` is designed to respond to DNS `A` queries with `127.0.0.1` for all subdomains of the specified top-level domain.
-When used in conjunction with Mac OS X's [/etc/resolver system](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man5/resolver.5.html), there's no configuration needed to add and remove host names for local web development.
+When used in conjunction with Mac OS X's [/etc/resolver system](https://www.manpagez.com/man/5/resolver/), there's no configuration needed to add and remove host names for local web development.
 
 ## Installation
 ```bash
