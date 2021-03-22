@@ -71,9 +71,9 @@ launchctl load ~/Library/LaunchAgents/cx.masq.masqd.plist
 ## 参考链接
 - [Pow](https://github.com/basecamp/pow) - Zero-configuration Rack server for Mac OS X
 - [Serving Apps Locally with Nginx and Pretty Domains
-](https://zaiste.net/posts/serving_apps_locally_with_nginx_and_pretty_domains/)
+](https://zaiste.net/posts/serving_apps-locally-nginx-pretty-domains/)
 - [Using Dnsmasq for local development on OS X](https://passingcuriosity.com/2013/dnsmasq-dev-osx/)
-- [通过 Nginx 给本地应用取个漂亮域名](http://7anshuai.js.org/blog/work/nginx-and-pretty-domains.html)
+- [通过 Nginx 给本地应用取个漂亮域名](http://7anshuai.js.org/blog/nginx-and-pretty-domains/)
 
 ## License
 [MIT](/LICENSE)
